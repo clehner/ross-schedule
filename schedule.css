@@ -1,0 +1,75 @@
+#main {
+	width:216px;
+	max-width:100%;
+	margin:0 auto 1px;
+	border:1px solid black;
+	overflow:auto;
+	font:13px Arial, sans-serif;
+	line-height: 1.2em;
+	text-align:center;
+}
+#schedule {
+	width:100%;
+	border-collapse:collapse;
+	background-color:#f5f5f5;
+}
+#schedule th {
+	font-weight:normal;
+	color:white;
+	background-color:#707070;
+	padding:2px 4px;
+	font-weight:bold;
+}
+#date {
+	float:left;
+}
+#time {
+	float:right;
+}
+#schedule td {
+	white-space:nowrap;
+	width:50%;
+	text-align:center;
+	margin:0;
+	border-top:1px #909090 solid;
+	padding:1px;
+	/*height:13px;*/
+}
+/*#schedule span {
+	float:left;
+	display:none;
+	padding:0 3px 0 1px;
+	margin-left:-12px;
+	width:12px;
+}
+#schedule td.customized {
+	padding-left:12px;
+}*/
+#time-marker {
+	/* red triangles */
+	border-style:solid;
+	border-width:4px 10px;
+	border-color:transparent #b77;
+	margin:-4px 0;
+	position:absolute;
+	top:0;
+	display:none;
+}
+#time-marker-inner {
+	width:196px;
+	height:1px;
+	line-height:1px;
+	font-size:1px;
+	background-color:#f00;
+}
+/* ie hacks */
+* html #time-marker {
+	border:none;
+	margin:0;
+}
+* html #time-marker div {
+	width:100%;
+}
+#current-period {
+	background-color:#bcf;
+}

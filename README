@@ -1,0 +1,5 @@
+This schedule thing uses HTML5 offline caching.
+
+schedule.manifest must be served with mime-type text/cache-manifest.
+
+In order for browsers to update their offline cache, the contents of schedule.manifest must change. So whenever changes are made to the rest of the files, the #rev comment in schedule.manifest should be incremented.

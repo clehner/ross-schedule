@@ -415,7 +415,8 @@ if ($future_schedules === null) {
 }
 
 // remove past schedules
-$present = time();
+$time = time();
+$present = $time - ($time % 86400);
 foreach ($future_schedules as $date => $schedule_name) {
 	if (strtotime($date) < $present) {
 		unset($future_schedules[$date]);

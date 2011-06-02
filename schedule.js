@@ -39,6 +39,7 @@ function receiveSchedule(schedule) {
 	if (schedule && schedule.periods) {
 		// got schedule.
 		periods = schedule.periods;
+		numPeriods = periods.length;
 		renderTable();
 		updateTime();
 		saveSchedule();

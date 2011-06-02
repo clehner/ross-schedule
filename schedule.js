@@ -29,21 +29,36 @@ function $(id) {
 
 function loadSchedule() {
 	var script = document.createElement("script");
-	script.src = "http://localhost/schedule/today.php?" +
-		"c=receiveSchedule&" + Math.random();
+	script.src = "today.php?c=receiveSchedule&" + Math.random();
 	var head = document.documentElement.firstChild;
 	head.insertBefore(script, head.firstChild);
 }
 
+// get schedule data from the jsonp api
 function receiveSchedule(schedule) {
 	if (schedule && schedule.periods) {
+		// got schedule.
 		periods = schedule.periods;
-		//console.log('got schedule');
 		renderTable();
 		updateTime();
+		saveSchedule();
 	} else {
-		//console.log('getting schedule failed');
 		// Loading schedule failed.
+	}
+}
+
+var lsName = "rossperiodschedule";
+function saveSchedule() {
+	localStorage[lsName] = JSON.stringify(periods);
+}
+
+function loadScheduleFromMemory() {
+	var data = localStorage[lsName];
+	if (data) {
+		periods = data;
+		return true;
+	} else {
+		return false;
 	}
 }
 
@@ -162,7 +177,6 @@ function checkManifest() {
 		}, false);
 	}
 }
-checkManifest();
 
 var lastDay;
 function checkIfNeedNewSchedule() {
@@ -185,5 +199,7 @@ function initSchedule() {
 	renderTable();
 	updateTime();
 	setInterval(updateTime, 1000);
+	loadScheduleFromMemory();
 	checkIfNeedNewSchedule();
+	checkManifest();
 }
